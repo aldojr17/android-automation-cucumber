@@ -71,11 +71,9 @@ public class StepDefinitions {
     String REVIEW_PAGE_ADDRESS_ID = "com.saucelabs.mydemoapp.android:id/addressTV";
     String REVIEW_PAGE_CITY_ID = "com.saucelabs.mydemoapp.android:id/cityTV";
     String REVIEW_PAGE_COUNTRY_ID = "com.saucelabs.mydemoapp.android:id/countryTV";
-    String REVIEW_PAGE_CARD_HOLDER_ID = "com.saucelabs.mydemoapp.android:id/cardHolderTV";
-    String REVIEW_PAGE_CARD_NUMBER_ID = "com.saucelabs.mydemoapp.android:id/cardNumberTV";
-    String REVIEW_PAGE_EXPIRATION_DATE_ID = "com.saucelabs.mydemoapp.android:id/expirationDateTV";
-    String REVIEW_PAGE_QUANTITY_ID = "com.saucelabs.mydemoapp.android:id/itemNumberTV";
     String REVIEW_PAGE_PLACE_ORDER_BUTTON_ID = "com.saucelabs.mydemoapp.android:id/paymentBtn";
+
+    String COMPLETE_PAGE_TITLE_ID = "com.saucelabs.mydemoapp.android:id/completeTV";
 
 
     @Given("User open app")
@@ -204,16 +202,6 @@ public class StepDefinitions {
     public void placeOrder() {
         WebElement place_order_button = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(REVIEW_PAGE_PLACE_ORDER_BUTTON_ID)));
 
-        String REVIEW_PAGE_PRODUCT_TITLE_ID = "com.saucelabs.mydemoapp.android:id/titleTV";
-        String REVIEW_PAGE_FULL_NAME_ID = "com.saucelabs.mydemoapp.android:id/fullNameTV";
-        String REVIEW_PAGE_ADDRESS_ID = "com.saucelabs.mydemoapp.android:id/addressTV";
-        String REVIEW_PAGE_CITY_ID = "com.saucelabs.mydemoapp.android:id/cityTV";
-        String REVIEW_PAGE_COUNTRY_ID = "com.saucelabs.mydemoapp.android:id/countryTV";
-        String REVIEW_PAGE_CARD_HOLDER_ID = "com.saucelabs.mydemoapp.android:id/cardHolderTV";
-        String REVIEW_PAGE_CARD_NUMBER_ID = "com.saucelabs.mydemoapp.android:id/cardNumberTV";
-        String REVIEW_PAGE_EXPIRATION_DATE_ID = "com.saucelabs.mydemoapp.android:id/expirationDateTV";
-        String REVIEW_PAGE_QUANTITY_ID = "com.saucelabs.mydemoapp.android:id/itemNumberTV";
-
         WebElement product_title = driver.findElement(By.id(REVIEW_PAGE_PRODUCT_TITLE_ID));
         WebElement full_name = driver.findElement(By.id(REVIEW_PAGE_FULL_NAME_ID));
         WebElement address = driver.findElement(By.id(REVIEW_PAGE_ADDRESS_ID));
@@ -231,6 +219,7 @@ public class StepDefinitions {
 
     @Then("Proceed until product placed")
     public void productPlaced() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(COMPLETE_PAGE_TITLE_ID)));
         driver.quit();
     }
 }
